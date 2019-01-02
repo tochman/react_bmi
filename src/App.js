@@ -1,54 +1,16 @@
 import React, { Component } from 'react';
-import InputSelect from './InputSelect';
+import MethodSelect from './MethodSelect';
+import DisplayResult from './DisplayResult';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      weight: '',
+      height: '',
       method: 'metric',
       weightType: 'kg',
       heightType: 'cm'
-    }
-  }
-
-  bmi() {
-    let w = parseFloat(this.state.weight);
-    let h = parseFloat(this.state.height);
-    let m = this.state.method;
-    let bmi;
-
-    w = isNaN(w) ? 0 : w;
-    h = isNaN(h) ? 0 : h;
-
-    if (m === 'metric') {
-      bmi = w / (h / 100 * h / 100);
-    } else if (m === 'imperial') {
-      bmi = (w * 703 ) / (h * h);
-    }
-
-    let finalBMI = parseFloat(bmi.toFixed(2));
-    if (isNaN(finalBMI) || !isFinite(finalBMI) || finalBMI === 0) {
-      return '';
-    } else {
-      return `You are ${this.setBMIMessage(finalBMI)} with a BMI of ${finalBMI}`;
-    }      
-  }
-
-  setBMIMessage(finalBMI) {
-    if (finalBMI < 18.5) {
-      return "Underweight";
-    }
-  
-    if (finalBMI > 18.5 && finalBMI < 25) {
-      return "Normal";
-    }
-  
-    if (finalBMI > 25 && finalBMI < 30) {
-      return "Overweight";
-    }
-  
-    if (finalBMI > 30) {
-      return "Obese";
     }
   }
 
@@ -65,7 +27,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <InputSelect
+        <MethodSelect
           onChangeValue={this.setInputType.bind(this)}
         />
 
@@ -80,7 +42,7 @@ class App extends Component {
         </div>
 
         <div>
-          <p>{this.bmi()}</p>
+          <DisplayResult method={this.state.method} weight={this.state.weight} height={this.state.height} />
         </div>
       </div>
     );
