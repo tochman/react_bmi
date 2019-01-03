@@ -27,6 +27,7 @@ class App extends Component {
   render() {
     return (
       <div>
+        <h1>BMI Converter</h1>
         <MethodSelect
           onChangeValue={this.setInputType.bind(this)}
         />
@@ -37,7 +38,7 @@ class App extends Component {
         </div>
 
         <div>
-          <label>Height({this.state.heightType}) </label>
+          <label>Height({this.state.heightType})</label>
           <input type="tel" value={this.state.height} onChange={(e) => this.setState({height: e.target.value})}/>
         </div>
 
