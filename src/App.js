@@ -15,7 +15,6 @@ class App extends Component {
   }
 
   setInputType(e) {
-    debugger
     this.setState({ method: e.target.value }, () => {
       if (this.state.method === 'imperial') {
         this.setState({ weightType: 'lbs', heightType: 'inches' });

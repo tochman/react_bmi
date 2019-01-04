@@ -8,15 +8,17 @@ describe('BMI Converter', () => {
     });
 
     it('calculates metric results', async () => {
-        await expect(page).toFill('input[name="weight"]', '95')
-        await expect(page).toFill('input[name="height"]', '186')
+        await page.select('select[id="method"]', 'metric')
+        await page.type('input[name="weight"]', '95')
+        await page.type('input[name="height"]', '186')
         await expect(page).toMatch('You are Overweight with a BMI of 27.46')
     })
 
     it('calculates imperial results', async () => {
-        await expect(page).toSelect('select[name="method"]', 'Imperial')
-        await expect(page).toFill('input[name="weight"]', '200')
-        await expect(page).toFill('input[name="height"]', '73')
+        await page.select('select#method', 'imperial')
+        // await page.waitFor(1000);
+        await page.type('input[name="weight"]', '200')
+        await page.type('input[name="height"]', '73')
         await expect(page).toMatch('You are Overweight with a BMI of 26.38')
     })
 });
