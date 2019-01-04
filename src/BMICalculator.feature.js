@@ -3,6 +3,10 @@ describe('BMI Converter', () => {
         await page.goto('http://localhost:3000');
     });
 
+    beforeEach(async () => {
+        await page.reload();
+    });
+
     it('should display "BMI Converter" text on page', async () => {
         await expect(page).toMatch('BMI Converter');
     });
@@ -15,8 +19,7 @@ describe('BMI Converter', () => {
     })
 
     it('calculates imperial results', async () => {
-        await page.select('select#method', 'imperial')
-        // await page.waitFor(1000);
+        await page.select('select[id="method"]', 'imperial')
         await page.type('input[name="weight"]', '200')
         await page.type('input[name="height"]', '73')
         await expect(page).toMatch('You are Overweight with a BMI of 26.38')
