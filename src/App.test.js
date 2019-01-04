@@ -28,7 +28,11 @@ describe('<App />', () => {
   it('can change method', () => {
     const onChangeValue = stub();
     const component = shallow(<App onChangeValue={onChangeValue} />);
-    component.find("Child").prop('onChildClick')('foo');
+    const weightLabel = <label>Weight(lbs)</label>;
+    const heightLabel = <label>Height(inches)</label>;
+    component.find("MethodSelect").prop('onChangeValue')({target: {value:'imperial'}});
+    expect(component.contains(weightLabel)).toEqual(true);
+    expect(component.contains(heightLabel)).toEqual(true);
   })
 })
 

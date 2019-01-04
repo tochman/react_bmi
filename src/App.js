@@ -15,14 +15,14 @@ class App extends Component {
   }
 
   setInputType(e) {
-    debugger;
-    this.setState({method: e.target.value}, () => {
+    debugger
+    this.setState({ method: e.target.value }, () => {
       if (this.state.method === 'imperial') {
-        this.setState({weightType: 'lbs', heightType: 'inches' });
+        this.setState({ weightType: 'lbs', heightType: 'inches' });
       } else if (this.state.method === 'metric') {
-        this.setState({weightType: 'kg', heightType: 'cm' });
+        this.setState({ weightType: 'kg', heightType: 'cm' });
       }
-    })   
+    })
   }
 
   render() {
@@ -35,17 +35,19 @@ class App extends Component {
 
         <div>
           <label>Weight({this.state.weightType})</label>
-          <input type="tel" value={this.state.weight} onChange={(e) => this.setState({weight: e.target.value})}/>
+          <input type="tel" value={this.state.weight} onChange={(e) => this.setState({ weight: e.target.value })} />
         </div>
 
         <div>
           <label>Height({this.state.heightType})</label>
-          <input type="tel" value={this.state.height} onChange={(e) => this.setState({height: e.target.value})}/>
+          <input type="tel" value={this.state.height} onChange={(e) => this.setState({ height: e.target.value })} />
         </div>
 
-        <div>
-          <DisplayResult method={this.state.method} weight={this.state.weight} height={this.state.height} />
-        </div>
+        <DisplayResult
+          method={this.state.method}
+          weight={this.state.weight}
+          height={this.state.height}
+        />
       </div>
     );
   }
