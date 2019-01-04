@@ -11,12 +11,24 @@ describe('BMI Converter', () => {
         await expect(page).toMatch('BMI Converter');
     });
 
-    it('calculates metric results', async () => {
-        await page.select('select[id="method"]', 'metric')
-        await page.type('input[name="weight"]', '95')
-        await page.type('input[name="height"]', '186')
-        await expect(page).toMatch('You are Overweight with a BMI of 27.46')
+    describe('Metric method', async () => {
+        beforeEach( async () => {
+            await page.select('select[id="method"]', 'metric')
+            await page.type('input[name="weight"]', '95')
+            await page.type('input[name="height"]', '186')
+        })
+
+        it('displays assesment', async () => {   
+            await expect(page).toMatch('You are Overweight')
+        })
+
+
+        it('displays BMI value', async () => {   
+            await expect(page).toMatch('BMI of 27.46')
+        })
     })
+
+
 
     it('calculates imperial results', async () => {
         await page.select('select[id="method"]', 'imperial')
