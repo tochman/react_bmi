@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class InputSelect extends Component {
+class MethodSelect extends Component {
   
   render() {
     return (
@@ -14,4 +14,4 @@ class InputSelect extends Component {
   }
 }
 
-export default InputSelect
+export default MethodSelect

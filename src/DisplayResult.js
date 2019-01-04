@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { bmiCalculation } from './BMICalculator'
+import { bmiCalculation } from './BMICalculator';
 
 class DisplayResult extends Component {
   
@@ -13,7 +13,7 @@ class DisplayResult extends Component {
     
   render() {
     return (
-      <div>
+      <div id='response'>
         {this.calculate()}
       </div>
     )
