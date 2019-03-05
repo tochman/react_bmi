@@ -1,6 +1,7 @@
 describe('BMI Converter', () => {
     beforeAll(async () => {
         await page.goto('http://localhost:3000');
+        jest.setTimeout(10000)
     })
 
     beforeEach(async () => {
@@ -24,7 +25,7 @@ describe('BMI Converter', () => {
 
     describe('Imperial method', async () => {
         beforeEach(async () => {
-            await jestPuppeteer.debug()
+            // await jestPuppeteer.debug()
             await page.select('select[id="method"]', 'imperial')
             await page.type('input[name="weight"]', '200')
             await page.type('input[name="height"]', '73')

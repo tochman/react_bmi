@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { bmiCalculation } from './BMICalculator';
 
+
 class DisplayResult extends Component {
   
   calculate() {
@@ -13,9 +14,9 @@ class DisplayResult extends Component {
     
   render() {
     return (
-      <div id='response'>
+      <p id='response'>
         {this.calculate()}
-      </div>
+      </p>
     )
   }
 }
