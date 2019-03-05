@@ -8,16 +8,35 @@ describe('BMI Converter', () => {
     })
 
     describe('Metric method', async () => {
-        it('displays assessment', async () => {
+
+        beforeEach(async () => {
             await page.type('input[name="weight"]', '95')
             await page.type('input[name="height"]', '186')
+        })
+        it('displays assessment', async () => {
             await expect(page).toMatch('You are Overweight')
         })
 
         it('displays BMI value', async () => {
-            await page.type('input[name="weight"]', '95')
-            await page.type('input[name="height"]', '186')
             await expect(page).toMatch('BMI of 27.46')
         })
+    })
+
+    describe('Imperial method', async () => {
+        beforeEach(async () => {
+            await jestPuppeteer.debug()
+            await page.select('select[id="method"]', 'imperial')
+            await page.type('input[name="weight"]', '200')
+            await page.type('input[name="height"]', '73')
+        })
+
+        it('displays assesment', async () => {
+            await expect(page).toMatch('You are Overweight')
+        })
+
+        it('displays BMI value', async () => {
+            await expect(page).toMatch('BMI of 26.38')
+        })
+
     })
 })
